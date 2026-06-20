@@ -1,0 +1,63 @@
+{
+  "name": "quartz-disclaimer",
+  "version": "1.0.0",
+  "description": "Quartz v5 component plugin: adds a disclaimer banner to all pages",
+  "type": "module",
+  "license": "MIT",
+  "author": "Srikanth Kamath",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsktech/quartz-disclaimer"
+  },
+  "keywords": ["quartz", "quartz-plugin", "disclaimer", "component"],
+  "files": ["dist", "README.md"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "preact": "^10.0.0"
+  },
+  "peerDependenciesMeta": {
+    "preact": { "optional": false }
+  },
+  "dependencies": {
+    "@quartz-community/types": "github:quartz-community/types",
+    "@quartz-community/utils": "github:quartz-community/utils"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "preact": "^10.28.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "quartz": {
+    "name": "disclaimer",
+    "displayName": "Disclaimer",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultEnabled": true,
+    "defaultOptions": {},
+    "components": {
+      "Disclaimer": {
+        "displayName": "Disclaimer",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 5
+      }
+    }
+  }
+}
