@@ -1,6 +1,2 @@
-import { QuartzComponent } from '@quartz-community/types';
+export { Disclaimer } from './components/index.js';
 export { QuartzComponent, QuartzComponentProps } from '@quartz-community/types';
-
-declare const _default: () => QuartzComponent;
-
-export { _default as Disclaimer };
