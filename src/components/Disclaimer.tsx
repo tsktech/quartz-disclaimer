@@ -1,45 +1,33 @@
 import type {
   QuartzComponent,
-  QuartzComponentConstructor,
   QuartzComponentProps,
+  QuartzComponentConstructor,
 } from "@quartz-community/types"
 
-export interface DisclaimerOptions {
-  /** Custom text to display (optional, uses default if not set) */
-  text?: string
+const Disclaimer: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
+  const text = "⚠️ Disclaimer: This is an independent technical reference wiki. innerrange.com is the official source for product specifications and documentation. While we strive for accuracy, always cross-reference critical specifications against official Inner Range documentation."
+
+  const parts = text.split("innerrange.com")
+  return (
+    <div class="disclaimer-banner">
+      <p>
+        {parts.length > 1 ? (
+          <>
+            {parts[0]}
+            <a href="https://innerrange.com" target="_blank" rel="noopener noreferrer">
+              innerrange.com
+            </a>
+            {parts[1]}
+          </>
+        ) : (
+          text
+        )}
+      </p>
+    </div>
+  )
 }
 
-const defaultText =
-  "⚠️ Disclaimer: This is an independent technical reference wiki. innerrange.com is the official source for product specifications and documentation. While we strive for accuracy, always cross-reference critical specifications against official Inner Range documentation."
-
-export default ((opts?: DisclaimerOptions) => {
-  const text = opts?.text ?? defaultText
-
-  const Disclaimer: QuartzComponent = ({ cfg }: QuartzComponentProps) => {
-    return (
-      <div class="disclaimer-banner">
-        <p>
-          {text.split("innerrange.com").length > 1 ? (
-            <>
-              {text.split("innerrange.com")[0]}
-              <a
-                href="https://innerrange.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                innerrange.com
-              </a>
-              {text.split("innerrange.com")[1]}
-            </>
-          ) : (
-            text
-          )}
-        </p>
-      </div>
-    )
-  }
-
-  Disclaimer.css = `
+Disclaimer.css = `
 .disclaimer-banner {
   text-align: center;
   font-size: 0.85rem;
@@ -50,16 +38,8 @@ export default ((opts?: DisclaimerOptions) => {
   color: var(--gray);
   background: var(--light);
 }
-
-.disclaimer-banner p {
-  margin: 0;
-}
-
-.disclaimer-banner a {
-  color: var(--secondary);
-  text-decoration: underline;
-}
+.disclaimer-banner p { margin: 0; }
+.disclaimer-banner a { color: var(--secondary); text-decoration: underline; }
 `
 
-  return Disclaimer
-}) satisfies QuartzComponentConstructor
+export default (() => Disclaimer) satisfies QuartzComponentConstructor

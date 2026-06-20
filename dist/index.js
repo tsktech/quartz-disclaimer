@@ -24,25 +24,16 @@ function u2(e2, t2, n2, o2, i2, u3) {
 }
 
 // src/components/Disclaimer.tsx
-var defaultText = "\u26A0\uFE0F Disclaimer: This is an independent technical reference wiki. innerrange.com is the official source for product specifications and documentation. While we strive for accuracy, always cross-reference critical specifications against official Inner Range documentation.";
-var Disclaimer_default = ((opts) => {
-  const text = opts?.text ?? defaultText;
-  const Disclaimer = ({ cfg }) => {
-    return /* @__PURE__ */ u2("div", { class: "disclaimer-banner", children: /* @__PURE__ */ u2("p", { children: text.split("innerrange.com").length > 1 ? /* @__PURE__ */ u2(S, { children: [
-      text.split("innerrange.com")[0],
-      /* @__PURE__ */ u2(
-        "a",
-        {
-          href: "https://innerrange.com",
-          target: "_blank",
-          rel: "noopener noreferrer",
-          children: "innerrange.com"
-        }
-      ),
-      text.split("innerrange.com")[1]
-    ] }) : text }) });
-  };
-  Disclaimer.css = `
+var Disclaimer = ({ cfg }) => {
+  const text = "\u26A0\uFE0F Disclaimer: This is an independent technical reference wiki. innerrange.com is the official source for product specifications and documentation. While we strive for accuracy, always cross-reference critical specifications against official Inner Range documentation.";
+  const parts = text.split("innerrange.com");
+  return /* @__PURE__ */ u2("div", { class: "disclaimer-banner", children: /* @__PURE__ */ u2("p", { children: parts.length > 1 ? /* @__PURE__ */ u2(S, { children: [
+    parts[0],
+    /* @__PURE__ */ u2("a", { href: "https://innerrange.com", target: "_blank", rel: "noopener noreferrer", children: "innerrange.com" }),
+    parts[1]
+  ] }) : text }) });
+};
+Disclaimer.css = `
 .disclaimer-banner {
   text-align: center;
   font-size: 0.85rem;
@@ -53,18 +44,10 @@ var Disclaimer_default = ((opts) => {
   color: var(--gray);
   background: var(--light);
 }
-
-.disclaimer-banner p {
-  margin: 0;
-}
-
-.disclaimer-banner a {
-  color: var(--secondary);
-  text-decoration: underline;
-}
+.disclaimer-banner p { margin: 0; }
+.disclaimer-banner a { color: var(--secondary); text-decoration: underline; }
 `;
-  return Disclaimer;
-});
+var Disclaimer_default = (() => Disclaimer);
 
 export { Disclaimer_default as Disclaimer };
 //# sourceMappingURL=index.js.map
